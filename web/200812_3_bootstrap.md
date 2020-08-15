@@ -69,5 +69,114 @@ download해서 확인해보자
 
 
 
-#### spacing
+#### spacing 종합
 
+m: margin
+
+p: padding
+
+t: top
+
+b: bottom
+
+l: left
+
+r: right
+
+x: left, right
+
+y: top, bottom
+
+0: 0rem 0px
+
+1: 0.25rem 4px
+
+2: 0.5rem 8px
+
+3: 1rem 16px
+
+4: 1.5rem 24px
+
+5: 3rem 48px
+
+
+
+.mt-1 (상) = margin top
+
+= 0.25rem = 16 * 0.25 = 4px
+
+.my-1 (상하)
+
+.mx-0 (좌우)
+
+.m-4 네 방향 다 4
+
+.mx-auto 가운데정렬
+
+.py-0 패딩/상하/0으로 주겠다.
+
+.bg-danger
+
+.d-inline (display:inline)
+
+.d-block
+
+.fixed-bottom
+
+.fixed-top
+
+.d-flex 
+
+justify-content-start (flex-start 가 아니고 그냥 start 형태)
+
+.sticky-top : 화면에 고정되는 것은 맞는데 다음 sticky 요소를 만나면 그걸로 대체되고 밀려올라감
+
+
+
+#### breakpoints
+
+sm, md, lg, xl 화면이 언제언제 바뀔지 내부적으로 정해놓음
+
+
+
+
+
+### Responsive Web Design 
+
+* one source , multi use
+* 각각의 디바이스별로 코드를 짜지 말고, 우리는 한 번만 짜고 이 하나를 멀티유즈하자.
+* 하나의 웹싸이트를 구축해서 다양한 화면 해상도에 최적화를 하겠다.
+* 반응형 웹은 별도의 기술이름이 아니고, 휍디자인에 대한 접근방식이다. = 반응형 레이아웃 작성에 도움이 되는 사례들의 모음 등을 기술하는데 사용되는 용어
+* 예시: Media Queries, Flexbox, Bootstrap Grid System, The viewport meta tag
+
+
+
+### bootstrap grid system은 내부적으로 flexbox 로 구성된다. 
+
+container, row, column 으로 컨텐츠를 배치하고 정렬한다.
+
+```html
+<div class="container">
+   <div class="row">    <!--row를 선언하면,  display: flex 가 자동으로 선언된다.-->
+       <div class="col"></div>
+       <div class="col"></div>
+       <div class="col"></div>
+    </div> 
+</div>
+```
+
+12개 컬럼 = 하나의 웹페이지를 12개로 나눠서 사용하겠다. = 약수가 많다. 
+
+5개의 breakpoints = 5 default responsive tiers
+
+>이 정도는 외워야함.
+>
+>`.col-`   <576px
+>
+>`.col-sm-`   >=576px
+>
+>`.col-md-`  >= 768px
+>
+>`.col-lg-`  >=992px
+>
+>`.col-xl-`  >=1200px
