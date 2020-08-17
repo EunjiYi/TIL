@@ -519,3 +519,12 @@ django template에서 사용하는 built-in template system이다.
 
 * 기본 흐름을 잘 기억하자!!
 
+
+
+**tips**
+
+> offset이랑 colume은 같이 내려감.
+>
+> offset이 컬럼 앞에 공간을 주는 개념이라서 컬럼을 따라간다!!!
+>
+> 핵꿀팁
