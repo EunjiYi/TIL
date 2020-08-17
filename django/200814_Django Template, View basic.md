@@ -179,9 +179,18 @@ settings.py
 
 
 - MTV(MVC패턴)
+  
+- ```
+  MVC패턴(Django에서는 MTV)
+  
+  * Model - View - Controller
+  * Model- Template - View
+  ```
+  
   -  Model: 장고에서는 Model
   -  View:  장고에서는 Templete
   - Controller:  장고에서는 View
+  
 - 뷰가 이름이 같아서 헷갈린다..... 조심
   
   
@@ -192,9 +201,8 @@ settings.py
 
 ​	1. urls.py
 
-​	2. views.py
-
-	3. templates(html 들)
+	2. views.py
+ 	3. templates(html 들)
 
 
 
@@ -202,6 +210,7 @@ settings.py
   - **path('url 패턴/', 실행이 되어야 하는 views에 있는함수, 해당 path의 별명)**
     
   - 많이 놓치는 부분: `url 패턴 뒤에 슬러쉬!!`
+    
     - 경로 없이 'index.html'만 써도 알아서 템블릿 폴더안에 있는걸 인식함 - 장고와의 약속을지켜서 폴더를 만들었기 때문이다.
     
   - url뒤쪽에 어팬드 슬래쉬 해야함 - 장고특성
@@ -339,9 +348,13 @@ django template에서 사용하는 built-in template system이다.
 
 프로그래밍적 로직이 아니라 프레젠테이션을 표현하기 위한 것
 
+파이썬처럼 if, for를 사용할 수 있지만 `이것은 단순히 python code로 실행되는 것이 아니다.`
+
+
+
 **syntax**
 
-- variables  `{{ }}`
+- variables  `{{ variable }}`
   - context에서 값을 출력하는데, context는 키를 값에 매핑하는 딕셔너리와 유사한 객체
 - tags  `{% tag %}`
 - filters  `{{ variable|filter }}`
@@ -352,7 +365,7 @@ django template에서 사용하는 built-in template system이다.
 
 ### 템플릿 시스템 설계 철학
 
-- 장고는 템플릿 시스템이 표현을 제어하는 도구이자 `표현에 관련된 로직일 뿐`이라고 생각한다.
+- django는 템플릿 시스템이 `표현`을 제어하는 도구이자 `표현에 관련된 로직일 뿐`이라고 생각한다.
 - 템플릿시스템에서는 이러한 기본 목표를 넘어서는 기능을 지원해서는 안된다. 즉 연산하면 안됨.
 
 
@@ -362,3 +375,147 @@ django template에서 사용하는 built-in template system이다.
 **Form**
 
 - 웹에서 사용자 정보를 입력하는 여러(text, button, checkbox, file, hidden, image, password, radio, reset, submit, select, input) 방식을 제공하고, **사용자로부터 할당된 데이터를 서버로 전송하는 역할**을 담당하는 HTML 태그
+
+
+
+
+
+# 장고 동작 정의 방법
+
+* Template Variable
+
+  * html과 같은 template에서 views.py에서 준비한 변수를 가져다 쓰기 위한 방법
+
+  * render() 세번째 인자로 `{'key': value}`와 같이 딕셔너리 형태로 넘겨주면 template에서 key를 이용하여 value를 가져 올 수 있다.
+
+    ```html
+    context = {'key': value}
+    return render(request, 'index.html', context)
+    ```
+
+    ```
+    {{ key }}로 value를 보여줄 수 있다.
+    ```
+
+* Variable Routing(동적 라우팅)
+
+  * url주소 일부를 변수처럼 사용해서 동적인 주소를 만드는 것
+
+    주소 요청 : `https://127.0.0.1:8000/hello/문자열`
+
+    urls.py
+
+    ```
+    path('hello/<str(타입):name(변수명)>/'. views.hello),
+    ```
+
+    * 타입을 int로 넣으면 숫자를 받을 수 있다.
+
+    views.py
+
+    ```
+    def hello(request, name(변수명)):
+    	print(name)
+    	context {
+    		'name': name
+    	}
+    	return render(request, 'hello.html', context)
+    ```
+
+    template(hello.html)
+
+    ```
+    <body>
+    	<h1>이름은 : {{ name }}</h1> #context의 key값을 사용하면 value를 출력한다.
+    </body>
+    ```
+
+    
+
+* DTL (tag와 filter)
+
+  * 로직을 표현 할 때는 : `{% for %}`
+
+  * 값을 표현 할 때는 : `{{ }}`
+
+  * 주석으로 나타내고 싶을 때는 : `{# #}`
+
+  * 여러줄 주석 : `{% comment %} {% endcomment %}`
+
+  * DTL을 사용할 때 html 주석(<!-- -->)을 사용하면 주석처리가 되지않아 오류나는 경우 발생
+
+    ```
+    <!-- <h1>{{ i*2 }}</h1> --> # 오류발생함
+    <!-- <h1>{#{ i*2 }#}</h1> --> # DTL 주석처리
+    {% comment %} <h1>{{ i*2 }}</h1> {% endcomment %} # DTL 전체 주석처리
+    ```
+
+  * for 태그
+
+    * 반복을 위한 태그
+
+      ```
+      {% for 임수변수 in iterable한 객체 %}
+      {% endfor %}
+      ```
+
+    * for empty
+
+      ```
+      {% for 임시변수 in iterable한 객체 %}
+      	값이 하나라도 있으면 여기가 실행
+      {% empty %}
+      	출력할 값이 없으면 출력.
+      {% endfor %}
+      ```
+
+  * if 태그
+
+    * 조건을 구분 하기 위한 태그
+
+      ```
+      {% if 조건문 %}
+      {% elif 조건문 %}
+      {% else %}
+      {% endif %}
+      ```
+
+  * 나머지 기타 유용한 DTL 문서를 참고.(구글검색 키워드 : django, built-in template)
+
+* Form
+
+  * HTML form tag 의미
+
+  * 입력 받은 데이터를 어딘가로 보낼 때 사용.
+
+    ```
+    <form action="/test/" method="GET"> # action : 어디로 보낼 것인가 / GET : 데이터조회, # action="//" 슬래쉬 두개 잊지말자
+    # POST : 데이터 변경, 비밀번호 등
+    
+    	input 데이터를 입력 받게 적절히 코딩하면 됨.
+    	
+    	# 오락실 버튼(버튼 모양만 있음. 의미부여 하기전까진 의미 없음.)
+    	<input type="button">
+    	
+    	# 미사일 버튼(버튼 자체에 의미가 있음.)
+    	<input type="submit">
+    			or
+    	<button></button>
+    </form>
+    ```
+
+  * action에 들어가는 목표 url 설정 주의 사항
+
+    ```
+    action="/catch/"
+    => 127.0.0.1:8000/catch/
+    
+    action="catch/"
+    => 현재 주소 : 127.0.0.1:8000/index
+    => 127.0.0.1:8000/index/catch
+    ```
+
+    
+
+* 기본 흐름을 잘 기억하자!!
+
