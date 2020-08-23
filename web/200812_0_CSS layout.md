@@ -198,7 +198,9 @@ flex-basis: 박스너비의 기본값을 어떻게 잡아나가느냐
 > 부모요소에 wrap으로 설정(정확히 몇개인지 감쌌을 때)되어있을때만 align-content가 먹는다. 
 >
 > wrap이어도 한줄이면 align-items사용가능. 여러개면 align-content사용하니까 그냥 wrap일때는 거의 align-content쓴다고 보면된다.
+
 > wrap-reverse 넘쳤는데 위로 보낼수도 있다. 
+
 nowrap 설정에 따라 부모를 넘어서 한줄로 나올수도 있다.
 
 
