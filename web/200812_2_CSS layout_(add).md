@@ -98,7 +98,7 @@ float 없애는 걸 clear라고 부른다. 보통 클래스이름으로 clearfix
 >
 > > flex-start
 > >
-> > flext-end
+> > flex-end
 > >
 > > center
 > >
@@ -173,7 +173,7 @@ float 없애는 걸 clear라고 부른다. 보통 클래스이름으로 clearfix
 ### flex 시작하기
 
 ```
-,flex-container {
+.flex-container {
 	display: flex /*부모는 그대로 block속성이다.*/
 } /*display: inline-flex 하면 부모도 inline요소가 된다.*/
 ```
