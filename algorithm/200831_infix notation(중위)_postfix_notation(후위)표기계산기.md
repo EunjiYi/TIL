@@ -11,7 +11,7 @@
 
 
 
-![image](200831_infix notation(중위)_postfix_notation(후위)표기계산기.assets/image.png)
+![20200902_010407](200831_infix notation(중위)_postfix_notation(후위)표기계산기.assets/image.png)
 
  #### 우선순위 = 숫자가 클수록 우선순위가 높은 것.
 
