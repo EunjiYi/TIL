@@ -125,3 +125,25 @@ ex. 스타벅스가서 소주 5병 주문하면, 소주를 안 파는 스타벅�
 
 
 
+
+
+#### 1: N model manager
+
+* Comment가 Article을 참조
+  * article
+* Article이 Comment를 참조(역참조)
+  * comment_set
+  * django에서는 역참조시 `모델이름(소문자)_set` 형식의 manager를 만든다.
+
+
+
+##### 자기자신을 참조하는 재귀적 참조일 때는
+
+```dja
+models.ForeignKey('self', on__delete=models.CASCADE)
+```
+
+ex. 대댓글
+
+
+
