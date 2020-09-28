@@ -81,6 +81,12 @@
 
 * views.py 에서 request.FILES 로 전달 받은 데이터를 form 인스턴스 생성할 때 같이 매개변수로 넣어서 DB 에 저장할 수 있게 해준다.
 
+  ```
+  form = ArticleForm(request.POST, request.FIELS)
+  ```
+
+  
+
 
 
 ### MEDIA_ROOT
