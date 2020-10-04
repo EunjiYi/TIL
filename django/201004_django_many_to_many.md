@@ -22,6 +22,31 @@
 
 <br>
 
+#### ManyToManyField(to, **options)
+
+* M : N 관계를 나타내기 위해 사용하는 필드
+* 하나의 필수 위치 인자(M:N 관계로 설정할 모델 클래스)가 필요하다.
+* options에는 through, related_name 등이 있다.
+
+
+
+#### DB Representation (데이터베이스에서의 표현)
+
+* django는 M:N 관계를 나타내는 중갵케이블(intermediary join table)을 만든다.
+* 테이블 이름은 ManyToManyField의 이름과 이를 포함하는 모델의 이름을 조합하여 생성한다.
+* ex1. `accounts_doctors_patient`
+* ex2. `articles_article_likeusers`
+
+
+
+돌발퀴즈
+
+django의 Model Relationship fields에서 사용하는 arguments 중 하나인 `related_name`은 참조되는 대상이 참조하는 대상을 조회할 때(역참조) 사용할 이름을 정의한다.
+
+
+
+<br>
+
 **개념**
 
 - M:N(이하 다대다) 관계를 나타내기 위해 사용하는 필드
@@ -40,6 +65,8 @@
 
 **Arguments**
 
+모두 optional 하며 관계가 작동하는 방식을 제어한다.
+
 - `related_name`
 
   - ForeignKey의 related_name과 동일
@@ -52,7 +79,7 @@
 
 - `symmetrical`
 
-  - ManyToManyField가 동일한 모델을 가리키는 정의에서만 사용
+  - ManyToManyField가 동일한 모델(self)을 가리키는 정의에서만 사용
 
   ```python
   from django.db import models
@@ -62,9 +89,20 @@
   ```
 
   - 예시처럼 동일한 모델을 가리키는 정의의 경우 django는 Person 클래스에 person_set 매니저를 추가 하지 않는다.
+  
   - 대신 대칭적(`symmetrical`)이라고 간주하며, source 인스턴스가 target 인스턴스를 참조하면 target 인스턴스도 source 인스턴스를 참조하게 된다.
+  
+    > source 인스턴스: 참조하는 인스턴스
+    >
+    > target 인스턴스: 참조되는 인스턴스
+  
   - 즉, 내가 당신의 친구라면 당신도 내 친구가 된다.
+  
   - self와의 관계에서 대칭을 원하지 않는 경우 `symmetrical=False`로 설정한다.
+  
+- 그 외
+
+  > `related_query_name`, `limit_choices_to`, `through_fields`, `db_table`, ...
 
 <br>
 
