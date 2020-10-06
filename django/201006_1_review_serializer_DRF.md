@@ -93,3 +93,16 @@ JSON
 2. serializer로 data 직렬화
 3. Response
 4. @api_view 붙이기
+
+
+
+-------
+
+#### violate DRY
+
+DRY 위배 - 소프트웨어 개발 3개 원칙 중 하나
+
+Do not Repeat Yourself
+
+여기서(DRF)는, 오버라이딩할 때 read_only=True를 적었는데 Meta 클래스에 read_only_field를 또 적은 것을 말한다. 
+
