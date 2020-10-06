@@ -184,3 +184,4 @@ urlpatterns = [
 
 
 
+https://drf-yasg.readthedocs.io/en/stable/
