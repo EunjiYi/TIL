@@ -106,3 +106,81 @@ Do not Repeat Yourself
 
 여기서(DRF)는, 오버라이딩할 때 read_only=True를 적었는데 Meta 클래스에 read_only_field를 또 적은 것을 말한다. 
 
+
+
+----------
+
+### DRF-YASG
+
+https://github.com/axnsan12/drf-yasg
+
+STABLE한 REST FRAMEWORK 버전으로 먼저 맞추고 yasg를 install하자.
+
+pip uninstal djangorestframework
+
+pip install djangorestframework=3.11
+
+이렇게 하면 3.11중에 제일 최신으로 설치된다.
+
+```bash
+pip install -U drf-yasg
+```
+
+
+
+앱등록
+
+```python
+INSTALLED_APPS = [
+   ...
+   'drf_yasg',
+```
+
+
+
+그리고 urls.py에 설정
+
+```python
+from django.contrib import admin
+from django.urls import path, include, re_path
+
+
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Snippets API",
+      default_version='v1',
+      description="Test description",
+      terms_of_service="https://www.google.com/policies/terms/",
+      contact=openapi.Contact(email="contact@snippets.local"),
+      license=openapi.License(name="BSD License"),
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/v1/', include('music.urls')),
+    
+    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
+]
+
+```
+
+
+
+서버키고 
+
+- A JSON view of your API specification at `/swagger.json`
+- A YAML view of your API specification at `/swagger.yaml`
+- A swagger-ui view of your API specification at `/swagger/`
+- A ReDoc view of your API specification at `/redoc/`
+
+
+
