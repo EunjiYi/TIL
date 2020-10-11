@@ -1,0 +1,12 @@
+django model
+
+
+
+sql
+
+
+
+orm
+
+
+
