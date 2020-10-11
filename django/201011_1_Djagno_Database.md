@@ -377,7 +377,4 @@ practice
 
 
 
-
-
-
-
+201011_2_Djagno_Database 보기
