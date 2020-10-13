@@ -46,6 +46,10 @@
 
 ### Flexbox
 
+https://developer.mozilla.org/ko/docs/Web/CSS/flex
+
+https://developer.mozilla.org/ko/docs/Web/CSS/display
+
 ### CSS Flexble Box Layout
 
 보통 부모요소에 설정을 하면 자식이 따라감. 자식에게만 특수로 적용하는 경우도 있기는 함.
