@@ -142,15 +142,47 @@ SSAFY 4th
 
 
 
-Call Stack : 요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 스텍(LIFO)형태의 자룡구조 = 함수 호출을 기록한다.
+Call Stack : 요청이 들어올 때마다 해당 요청을 순차적으로 처리하는 스텍(LIFO)형태의 자룡구조 = `함수 호출을 기록`한다.
 
-Web API(Browser API): 자바스크립트가 엔진이 아닌 브라우저 영역에서 제공하는 API(=프로그래밍으로 하는 무언가) - `setTimeout`, AJAX -> `xhr`, `setInterval` 등 타이머 함수들이 이런 특징을 가진다. 
+Web API(Browser API): 자바스크립트가 엔진이 아닌 `브라우저 영역에서 제공`하는 API(=프로그래밍으로 하는 무언가) - `setTimeout`, AJAX -> `xhr`, `setInterval` 등 타이머 함수들이 이런 특징을 가진다. 
 
 Task Queue: 콜백 함수가 대기하는 큐(FIFIO) 형태의 자료구조 = 함수가 대기
 
 Event Loop: 스텍에 함수가 없으면 큐에 있는 함수를 스텍에 밀어넣는 친구. call Stack에서 현재 실행 중인 Task가 없는지 확인하고 Task Queue에 Task 가 있는지 확인.
 
 
+
+아래의 코드가 실행되었을 때 Web API, Task Queue, Call Stack 그리고 Event Loop에서 어떤 동작이 일어나는지 서술하시오.
+
+```javascript
+console.log('Hello SSAFY!')
+
+setTimeout(function () {
+	console.log('I am from setTimeout')
+}, 1000)
+
+console.log('Bye SSAFY!')
+```
+
+Call Stack 에 console.log('Hello SSAFY!')가 들어가서 실행된다. 그 결과로 Hello SSAFY!가 출력되고 console.log('Hello SSAFY!') 는 stack에서 pop된다. 
+
+이제 Call Stack에 setTimeout이 들어간다.  setTimeout 는 Web  API(Browser API) 에서 제공하기 때문에 Call Stack에서 Web API로 이동한다. 이동하고나서 Timer()가 실행되어 1초를 기다린다. 
+
+setTimeout을 기다리지 않고, Call Stack에 console.log('Bye SSAFY!')가 들어가서 실행된다. 그 결과로 Bye SSAFY!가 출력되고, 실행이 됐으니 pop으로 stack에서 빠진다.
+
+Web API에서 1초를 기다린 후, 1초의 시간이 다 지나면 setTimeout은 Task Queue로 이동한다.  Event Loop가 Call Stack이 비어있는 것을 확인한 후 Task Queue에 가장 앞에 있는 함수 setTimeout를 Call Stack으로 이동시킨다.
+
+setTiemout이 Call Stack에서 실행되어 I am from setTimeout가 출력된다. 실행이 완료되면 stack에서 pop으로 빠진다.
+
+
+
+그래서 최종결과 output
+
+Hello SSAFY!
+
+Bye SSAFY!
+
+I am from setTimeout
 
 
 
@@ -266,8 +298,29 @@ Promise 객체는 비동기 작업이 맞이할 미래의 완료 또는 실패�
 
 성공했을 때 리졸브함수에다가 응답을 인자로 넣어서 함수가 실행된 결과를 프로미스에 담아서 then에 전달되는 것. 그럼 반환된 promise object를 then이 받는다. 
 
-```
+```javascript
+//Promise라는 객체가 응답으로 간다. return이 Promise다.
+// Promise라고 던지고 나서, 성공과 실패를 응답하는 무언가가 필요하다.
+// .then으로 풀어갈 무언가를 응답하는 애가 resolve
+// 실패상황은 reject에 담아서 보내준다.
+// resolve와 reject 둘다 콜백함수
 
+
+const getArticle = function (url) {
+    return new Promise(function (resolve, reject) { // 프로미스라는 객체로 응답할 건데, 이건 성공과 실패의 시나리오가 있다. 
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', url)
+        
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                resolve(xhr.response) // 그래서 성공하면 이걸 준다. -> 성공하면 이걸 .then으로 받아서 할 일(=결국 이 할 일도 callback함수)을 함.
+            } else{
+                reject(Error(xhr.statusText)) // 만약 실패하면 이걸 준다. -> 실패하면 이걸(발생한 에러)를 .catch로 받아서 할 일(=결국 이 할 일도 callback함수)을 함. 
+            }
+        }
+        xhr.send()
+    })
+}
 ```
 
 
