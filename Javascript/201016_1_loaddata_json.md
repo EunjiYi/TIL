@@ -1,15 +1,3 @@
-구글링 gitlab flow
-
-https://docs.gitlab.com/ee/topics/gitlab_flow.html
-
-
-
-구글링 github flow
-
-https://guides.github.com/introduction/flow/
-
-
-
 python manage.py loaddata movies.json
 
 features폴더 알아서 찾아준다.

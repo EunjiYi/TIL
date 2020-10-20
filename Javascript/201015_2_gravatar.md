@@ -94,7 +94,7 @@ import hashlib
 register = template.Library()
 
 @register.filter
-def get_gravatar(value): #value안에 email이 들어간다. {{ person.email|get_gravatar}} 애 의해서.
+def get_gravatar(value): #value안에 email이 들어간다. {{ person.email|get_gravatar}} 에 의해서.
     url = 'https://www.gravatar.com/avatar/'
     hash_value = hashlib.md5(value.encode('utf-8').lower()).hexdigest() #value를 인코딩해서 소문자로 바꾼다음에 해시로 만들어서 리턴
     return f'{url}{hash_value}?d=wavatar'

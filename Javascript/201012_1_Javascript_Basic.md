@@ -227,7 +227,7 @@ Manipulation 1 -> 선택한 것 내부에 접근해서 그 부분을 바꾸는 �
 
 
 
-Niode attribute
+Node attribute
 
 * element.sytle.backgroundColor
 
