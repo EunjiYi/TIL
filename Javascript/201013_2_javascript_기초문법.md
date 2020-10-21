@@ -375,7 +375,7 @@ const f = NaN // Not a Number 숫자가 아니다.
 
 * 동등연산자
 
-  * 비교 대상이 서로 다른 타입일 경우, 비교하기 전에 가능하다면 같은 자료형으로 형변환하여 비교한다.
+  * 비교 대상이 서로 다른 타입일 경우, 비교하기 전에 가능하다면 같은 자료형으로 형변환하여 비교한다. 값을 비교
   * 그러나 이런 형변환은 예기치 못한 결과를 야기할 수 있기 때문에 동등 연산자의 사용은 지양한다.
 
   * 그러니까 일치연산자를 사용하자!
@@ -508,7 +508,7 @@ let name = '홍길동'
 switch(name) {
 		case 'admin': {
 			console.log('관리자 모드')
-			break  // break는 필수. 없으면 breakk만날 때가지 아래 전부 동작.
+			break  // break는 필수. 없으면 break만날 때가지 아래 전부 동작.
 		}
 		case 'manager': {
 			console.log('매니저 모드')
@@ -965,7 +965,7 @@ python에서 dictionary = Javascript에서 Object
 
 * 요소접근
 
-  python [ ]   .get( )
+  `python` `[ ] 아니면  .get( )`
 
   > Key를 식별자로 활용할 수 없는 경우 반드시 [ ]로 접근해야 한다.
   >
