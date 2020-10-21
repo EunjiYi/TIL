@@ -122,3 +122,6 @@ PR을 받은 원본 저장소 관리자는 코드 변경내역을 확인하고 M
 
 나중에 추가로 작업할 일이 있으면 git pull real-blog(remote 별명) 명령을 통해 원본 저장소와 동기화를 진행하고 3~7을 반복한다.
 
+
+
+출처: https://wayhome25.github.io/git/2017/07/08/git-first-pull-request-story/
