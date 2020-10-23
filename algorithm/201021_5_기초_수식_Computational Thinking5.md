@@ -74,11 +74,23 @@ T(n-2) + 1 +1
 
 #### 문제7![image-20201022134220223](images/image046.png)
 
+![KakaoTalk_20201023_102641143](images/image037.png)
 
+
+
+![KakaoTalk_20201023_102701333](images/image038.png)
 
 
 
 #### 문제8![image-20201022134248247](images/image047.png)
+
+#### 방법1 = 조화급수의 합으로 증명
+
+![KakaoTalk_20201023_105403048](images/image071.png)
+
+#### 방법2 = 수 비교
+
+![KakaoTalk_20201023_110045940](images/image072.png)
 
 
 
