@@ -1,3 +1,7 @@
+https://kr.vuejs.org/v2/guide/index.html
+
+
+
 Vue는 ECMAScript 5 기능을 사용하기 때문에 IE8 이하 버전을 **지원하지 않습니다.** 하지만 모든 [ECMAScript 5 호환 브라우저](https://caniuse.com/#feat=es5)를 지원합니다
 
 
@@ -57,7 +61,7 @@ var app = new Vue({
 
 
 
-![image-20201109133026005](C:\Users\82107\Desktop\사피\201109_vue\201109\image01.png)
+![image-20201109133026005](./images/image01.png)
 
 
 
@@ -73,9 +77,7 @@ JS는 선택해서 변경했다면, vue는 데이터를 변경해주면 DOM도 �
 
 
 
-![image-20201109133659234](image-20201109133659234.png)
-
-
+![images02](./images/images02.png)
 
 ```html
 <div id="app-4">
