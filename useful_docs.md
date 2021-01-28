@@ -92,3 +92,35 @@ Best readme.md 템플릿 공유 드립니다.
 
 
 
+
+
+learngitbranching
+
+https://learngitbranching.js.org/?locale=ko
+
+
+
+
+
+pro git
+
+https://git-scm.com/book/ko/v2
+
+
+
+git pull 관련 
+
+https://backlog.com/git-tutorial/kr/stepup/stepup3_1.html
+
+
+
+git with d3
+
+https://onlywei.github.io/explain-git-with-d3
+
+
+
+vue 활용하기 4편. 데이터 바인딩 v-bind, v-model
+
+https://webdoli.tistory.com/172
+
