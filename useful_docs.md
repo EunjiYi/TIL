@@ -1,3 +1,17 @@
+Blob 파일에 대한 설명입니다. 이미지, 오디오, 비디오 등의 데이터를 사용할때 유용합니다!
+
+ https://heropy.blog/2019/02/28/blob/
+
+
+
+
+
+서버에서 이미지 불러올 때 참고하시면 될것같습니다
+
+https://myjamong.tistory.com/35
+
+
+
 Visual Studio Code를 사용하여 SSH 개발이 가능합니다 
 
 CLI로만 사용하기 답답하신 분들은 아래 링크 참고하셔서 사용해보세요! 
@@ -123,4 +137,10 @@ https://onlywei.github.io/explain-git-with-d3
 vue 활용하기 4편. 데이터 바인딩 v-bind, v-model
 
 https://webdoli.tistory.com/172
+
+
+
+
+
+
 
